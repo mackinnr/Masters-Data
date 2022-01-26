@@ -1,9 +1,6 @@
 ---
 title: "NKA Data - 1mo in FW at 24:00"
-author: "Rachael Mackinnon"
-output:
-  pdf_document: pdf_document
-  html_notebook: html_document
+output: html_document
 ---
 
 
@@ -12,7 +9,6 @@ output:
 Bringing in + organizing data 
 ```{r}
 NKA_150gSmoltsData <- read.csv(file.choose())
-
 
 Group <- NKA_150gSmoltsData$Group
 
