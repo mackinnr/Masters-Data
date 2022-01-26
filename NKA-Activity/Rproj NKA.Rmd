@@ -1,0 +1,83 @@
+---
+title: "NKA Data - 1mo in FW at 24:00"
+output: html_notebook
+---
+
+
+*150g Smolts Data*
+
+Bringing in + organizing data 
+```{r}
+NKA_150gSmoltsData <- read.csv(file.choose())
+
+
+Group <- NKA_150gSmoltsData$Group
+
+Activity_Value <- NKA_150gSmoltsData$NKA
+
+
+Fish<- NKA_150gSmoltsData$Fish
+
+```
+
+
+
+Statistics
+
+```{r}
+
+#Irrelevant - Just wanted to play around with the data table (re-organizing)
+NKA_150gSmoltsData2 <- NKA_150gSmoltsData %>% 
+                        pivot_wider(names_from = Group, values_from = NKA)
+
+NKA_150gSmoltsData2
+
+#Normality Test & Variance (p>0.5 = ND)- Data DOES fit 
+
+shapiro.test(Activity_Value)
+
+#Equal Variance of data since p>0.05
+fligner.test(Activity_Value~Group)
+
+#Unpaired T-test - Not SD because p-value = 0.3562
+
+t.test(Activity_Value~Group, alternative = "two.sided", var.equal = TRUE)
+
+```
+
+
+
+
+
+Plotting data 
+```{r}
+
+
+NKA_150gSmoltsData %>%  
+  ggplot(aes(x = Group, y = Activity_Value, fill = Group)) +
+  geom_boxplot(outlier.colour="black", outlier.shape=16,outlier.size=2, notch=FALSE) +
+  theme(axis.title.x = element_text(color="black", size=10, face="bold", vjust=-1.5),
+  axis.title.y = element_text(color="black", size=10, 
+  face="bold", angle=90, hjust=0.5, vjust=3), legend.position="top") +
+  scale_fill_brewer(palette="BuPu") +
+  xlab("Sampling Group") +
+  ylab("NKA Activity (umol ADP/hr/mg protein)") + 
+  geom_jitter(height = 0, width = 0.1, size=1, colour = "BLACK", alpha=0.6) 
+  
+
+NKA_150gSmoltsData %>%  
+  ggplot(aes(x = Group, y = Activity_Value, fill = Group)) +
+  geom_violin(trim="TRUE") + 
+  theme(axis.title.x = element_text(color="black", size=10, face="bold", vjust=-1.5),
+  axis.title.y = element_text(color="black", size=10, 
+  face="bold", angle=90, hjust=0.5, vjust=3), legend.position="top") +
+  scale_fill_brewer(palette="BuPu") +
+  xlab("Sampling Group") +
+  ylab("NKA Activity (umol ADP/hr/mg protein)") + 
+  geom_jitter(height = 0, width = 0.1, size=1, colour = "BLACK", alpha=0.6) 
+  
+  
+```
+
+
+Statistics
