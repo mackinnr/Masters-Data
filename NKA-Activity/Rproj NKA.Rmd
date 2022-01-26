@@ -1,6 +1,6 @@
 ---
 title: "NKA Data - 1mo in FW at 24:00"
-output: html_notebook
+output: html_document
 ---
 
 
@@ -47,8 +47,6 @@ t.test(Activity_Value~Group, alternative = "two.sided", var.equal = TRUE)
 
 
 
-
-
 *Plotting data*
 ```{r}
 
@@ -64,6 +62,10 @@ NKA_150gSmoltsData %>%
   ylab("NKA Activity (umol ADP/hr/mg protein)") + 
   geom_jitter(height = 0, width = 0.1, size=1, colour = "BLACK", alpha=0.6) 
   
+```
+
+
+```{r}
 
 NKA_150gSmoltsData %>%  
   ggplot(aes(x = Group, y = Activity_Value, fill = Group)) +
@@ -140,7 +142,12 @@ NKA_500gSmoltsData %>%
   xlab("Sampling Group") +
   ylab("NKA Activity (umol ADP/hr/mg protein)") + 
   geom_jitter(height = 0, width = 0.1, size=1, colour = "BLACK", alpha=0.6) 
+
   
+```
+
+
+```{r}
 
 NKA_500gSmoltsData %>%  
   ggplot(aes(x = Group, y = Activity_Value, fill = Group)) +
@@ -152,5 +159,5 @@ NKA_500gSmoltsData %>%
   xlab("Sampling Group") +
   ylab("NKA Activity (umol ADP/hr/mg protein)") + 
   geom_jitter(height = 0, width = 0.1, size=1, colour = "BLACK", alpha=0.6) 
-  
+
 ```
