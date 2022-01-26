@@ -22,7 +22,7 @@ Fish<- NKA_150gSmoltsData$Fish
 
 
 
-Statistics
+*Statistics*
 
 ```{r}
 
@@ -49,7 +49,7 @@ t.test(Activity_Value~Group, alternative = "two.sided", var.equal = TRUE)
 
 
 
-Plotting data 
+*Plotting data*
 ```{r}
 
 
@@ -78,6 +78,3 @@ NKA_150gSmoltsData %>%
   
   
 ```
-
-
-Statistics
