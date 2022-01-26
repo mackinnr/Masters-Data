@@ -1,6 +1,8 @@
 ---
 title: "NKA Data - 1mo in FW at 24:00"
-output: html_notebook
+output:
+  pdf_document: default
+  html_notebook: default
 ---
 
 
@@ -153,4 +155,9 @@ NKA_500gSmoltsData %>%
   ylab("NKA Activity (umol ADP/hr/mg protein)") + 
   geom_jitter(height = 0, width = 0.1, size=1, colour = "BLACK", alpha=0.6) 
   
+```
+
+Stich to PDF
+```{r}
+
 ```
