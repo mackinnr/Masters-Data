@@ -219,43 +219,6 @@ pre code {
 <p>Bringing in + organizing data</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuTktBXzE1MGdTbW9sdHNEYXRhIDwtIHJlYWQuY3N2KGZpbGUuY2hvb3NlKCkpXG5cblxuR3JvdXAgPC0gTktBXzE1MGdTbW9sdHNEYXRhJEdyb3VwXG5cbkFjdGl2aXR5X1ZhbHVlIDwtIE5LQV8xNTBnU21vbHRzRGF0YSROS0FcblxuXG5GaXNoPC0gTktBXzE1MGdTbW9sdHNEYXRhJEZpc2hcblxuYGBgIn0= -->
-<pre class="r"><code>NKA_150gSmoltsData &lt;- read.csv(file.choose())
-
-
-Group &lt;- NKA_150gSmoltsData$Group
-
-Activity_Value &lt;- NKA_150gSmoltsData$NKA
-
-
-Fish&lt;- NKA_150gSmoltsData$Fish
-</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Statistics</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG4jSXJyZWxldmFudCAtIEp1c3Qgd2FudGVkIHRvIHBsYXkgYXJvdW5kIHdpdGggdGhlIGRhdGEgdGFibGUgKHJlLW9yZ2FuaXppbmcpXG5OS0FfMTUwZ1Ntb2x0c0RhdGEyIDwtIE5LQV8xNTBnU21vbHRzRGF0YSAlPiUgXG4gICAgICAgICAgICAgICAgICAgICAgICBwaXZvdF93aWRlcihuYW1lc19mcm9tID0gR3JvdXAsIHZhbHVlc19mcm9tID0gTktBKVxuXG5OS0FfMTUwZ1Ntb2x0c0RhdGEyXG5cbiNOb3JtYWxpdHkgVGVzdCAmIFZhcmlhbmNlIChwPjAuNSA9IE5EKS0gRGF0YSBET0VTIGZpdCBcblxuc2hhcGlyby50ZXN0KEFjdGl2aXR5X1ZhbHVlKVxuXG4jRXF1YWwgVmFyaWFuY2Ugb2YgZGF0YSBzaW5jZSBwPjAuMDVcbmZsaWduZXIudGVzdChBY3Rpdml0eV9WYWx1ZX5Hcm91cClcblxuI1VucGFpcmVkIFQtdGVzdCAtIE5vdCBTRCBiZWNhdXNlIHAtdmFsdWUgPSAwLjM1NjJcblxudC50ZXN0KEFjdGl2aXR5X1ZhbHVlfkdyb3VwLCBhbHRlcm5hdGl2ZSA9IFwidHdvLnNpZGVkXCIsIHZhci5lcXVhbCA9IFRSVUUpXG5cbmBgYCJ9 -->
-<pre class="r"><code>
-#Irrelevant - Just wanted to play around with the data table (re-organizing)
-NKA_150gSmoltsData2 &lt;- NKA_150gSmoltsData %&gt;% 
-                        pivot_wider(names_from = Group, values_from = NKA)
-
-NKA_150gSmoltsData2
-
-#Normality Test &amp; Variance (p&gt;0.5 = ND)- Data DOES fit 
-
-shapiro.test(Activity_Value)
-
-#Equal Variance of data since p&gt;0.05
-fligner.test(Activity_Value~Group)
-
-#Unpaired T-test - Not SD because p-value = 0.3562
-
-t.test(Activity_Value~Group, alternative = &quot;two.sided&quot;, var.equal = TRUE)
-</code></pre>
-<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>Plotting data</p>
