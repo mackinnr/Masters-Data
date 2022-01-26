@@ -1,6 +1,6 @@
 ---
 title: "NKA Data - 1mo in FW at 24:00"
-output: html_notebook
+output: html_document
 ---
 
 
@@ -9,7 +9,6 @@ output: html_notebook
 Bringing in + organizing data 
 ```{r}
 NKA_150gSmoltsData <- read.csv(file.choose())
-
 
 Group <- NKA_150gSmoltsData$Group
 
@@ -64,6 +63,10 @@ NKA_150gSmoltsData %>%
   ylab("NKA Activity (umol ADP/hr/mg protein)") + 
   geom_jitter(height = 0, width = 0.1, size=1, colour = "BLACK", alpha=0.6) 
   
+  
+```
+Plotting data*
+```{r}
 
 NKA_150gSmoltsData %>%  
   ggplot(aes(x = Group, y = Activity_Value, fill = Group)) +
@@ -77,7 +80,6 @@ NKA_150gSmoltsData %>%
   geom_jitter(height = 0, width = 0.1, size=1, colour = "BLACK", alpha=0.6) 
   
 ```
-
 
 
 *500g Smolts Data*
@@ -103,6 +105,7 @@ Fish<- NKA_500gSmoltsData$Fish
 ```{r}
 
 #Irrelevant - Just wanted to play around with the data table (re-organizing)
+
 NKA_500gSmoltsData2 <- NKA_500gSmoltsData %>% 
                         pivot_wider(names_from = Group, values_from = NKA)
 
@@ -123,9 +126,6 @@ t.test(Activity_Value~Group, alternative = "two.sided", var.equal = FALSE)
 ```
 
 
-
-
-
 *Plotting data*
 ```{r}
 
@@ -141,6 +141,11 @@ NKA_500gSmoltsData %>%
   ylab("NKA Activity (umol ADP/hr/mg protein)") + 
   geom_jitter(height = 0, width = 0.1, size=1, colour = "BLACK", alpha=0.6) 
   
+  
+```
+*Plotting data*
+```{r}
+
 
 NKA_500gSmoltsData %>%  
   ggplot(aes(x = Group, y = Activity_Value, fill = Group)) +
@@ -153,4 +158,8 @@ NKA_500gSmoltsData %>%
   ylab("NKA Activity (umol ADP/hr/mg protein)") + 
   geom_jitter(height = 0, width = 0.1, size=1, colour = "BLACK", alpha=0.6) 
   
+```
+Stich to PDF
+```{r}
+
 ```
