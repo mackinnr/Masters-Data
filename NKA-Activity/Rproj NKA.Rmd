@@ -1,0 +1,44 @@
+---
+title: "NKA Data - 1mo in FW at 24:00"
+output: html_notebook
+---
+
+
+*150g Smolts Data*
+
+Bringing in + organizing data 
+```{r}
+NKA_150gSmoltsData <- read.csv(file.choose())
+
+NKA_150gSmoltsData 
+
+Group <- NKA_150gSmoltsData$Group
+
+Activity_Value <- NKA_150gSmoltsData$NKA
+
+
+Fish<- NKA_150gSmoltsData$Fish
+
+#Come back to this
+NKA_150gSmoltsData %>% 
+  as_tibble() %>% 
+   pivot_wider(
+    names_from = Group, 
+    values_from = Activity_Value)
+select(Fish, Group, Activity_Value)
+ 
+
+rlang::last_error()
+```
+
+Plotting data 
+```{r}
+
+NKA_150gSmoltsData%>%  
+  ggplot(aes(x = , y = Activity_Value, fill = Group, color = Group)) +
+  geom_boxplot(outlier.colour="black", outlier.shape=16,outlier.size=2, notch=FALSE) +
+  theme(axis.text.x=element_text(angle=90,hjust=1,vjust=1)) + 
+  xlab("Sampling Group") +
+  ylab("NKA Activity (umol ADP/hr/mg protein)")
+  
+
